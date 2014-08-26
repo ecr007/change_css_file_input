@@ -1,0 +1,44 @@
+Step 1. Create a simple html markup
+
+<div class="fileUpload btn btn-primary">
+    <span>Upload</span>
+    <input type="file" class="upload" />
+</div>
+Step 2. CSS: Tricky Part
+
+.fileUpload {
+	position: relative;
+	overflow: hidden;
+	margin: 10px;
+}
+.fileUpload input.upload {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+For simplicity, I am using Bootstrap CSS to style the button (div.file-upload).
+
+Step 2:
+
+Upload button with selected file
+
+Unfortunately there is no PURE CSS way to do it. However, if you really want to display the selected file, the following JavaScript snippet could help for this case.
+
+JavaScript:
+
+document.getElementById("uploadBtn").onchange = function () {
+    document.getElementById("uploadFile").value = this.value;
+};
+DOM change
+
+<input id="uploadFile" placeholder="Choose File" disabled="disabled" />
+<div class="fileUpload btn btn-primary">
+    <span>Upload</span>
+    <input id="uploadBtn" type="file" class="upload" />
+</div>
